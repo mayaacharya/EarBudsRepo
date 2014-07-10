@@ -21,7 +21,7 @@
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
     <ProjectView>ShowAllFiles</ProjectView>
     <NodejsPort>1337</NodejsPort>
-    <StartWebBrowser>True</StartWebBrowser>
+    <StartWebBrowser>true</StartWebBrowser>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,48 +32,21 @@
   <ItemGroup>
     <Compile Include="angular.js" />
     <Compile Include="app.js" />
-    <Compile Include="js\angular-route.js" />
-    <Compile Include="js\angular.js" />
-    <Compile Include="js\bootstrap.js" />
-    <Compile Include="js\bootstrap.min.js" />
-    <Compile Include="js\earBudsApp.js" />
-    <Compile Include="js\jquery-1.11.1.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\user.js" />
-    <None Include="App_Data\PublishProfiles\helloworldmaya.pubxml" />
-    <Content Include="css\bootstrap-theme.css" />
-    <Content Include="css\bootstrap-theme.css.map" />
-    <Content Include="css\bootstrap-theme.min.css" />
-    <Content Include="css\bootstrap.css" />
-    <Content Include="css\bootstrap.css.map" />
-    <Content Include="css\bootstrap.min.css" />
-    <Content Include="css\earBudsApp.css" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="images\EarBudsLogo.png" />
-    <Content Include="images\EarBudsLogoHeader.png" />
-    <Content Include="images\Thumbs.db" />
     <Content Include="index.html" />
     <Content Include="package.json" />
     <Content Include="public\stylesheets\style.styl" />
     <Content Include="README.md" />
-    <Content Include="views\home.html" />
-    <Content Include="views\index.html" />
-    <Content Include="views\musicians.html" />
-    <Content Include="views\profile.html" />
+    <Content Include="routes\index.html" />
+    <Content Include="views\maya.html" />
+    <Content Include="views\index.jade" />
+    <Content Include="views\layout.jade" />
     <Content Include="Web.config" />
     <Content Include="website.publishproj" />
     <None Include="Web.Debug.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="App_Data\PublishProfiles\" />
-    <Folder Include="css\" />
-    <Folder Include="fonts\" />
-    <Folder Include="images\" />
-    <Folder Include="js\" />
     <Folder Include="public\" />
     <Folder Include="public\images\" />
     <Folder Include="public\javascripts\" />
