@@ -1,3 +1,7 @@
 ﻿#mainContent{
   padding-top: 64px;
+  background-image: url(".../images/EarBuds-70.jpg");
+  background-size: 450px 450px;
+  background-repeat:no-repeat;
 }
+

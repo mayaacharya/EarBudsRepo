@@ -19,6 +19,11 @@ earBudsApp.config(['$routeProvider',
             controller: 'MusiciansCtrl',
             activetab: 'musicians'
         }).
+        when('/register', {
+            templateUrl: 'views/register.html',
+            controller: 'RegisterCtrl',
+            activetab: 'register'
+        }).
         otherwise({
             redirectTo: '/home'
         });
@@ -34,6 +39,7 @@ earBudsApp.controller("MainCtrl", ['$scope', '$http', '$route', function ($scope
 earBudsApp.controller("ProfileCtrl", ['$scope', '$http', '$route', function($scope, $http, $route) {
     $scope.$route = $sroute;
 }])
+
 
 //Create the StationsCtrl Controller...
 bartNowApp.controller("StationsCtrl", ['$scope', '$http', 'GeolocationService',
