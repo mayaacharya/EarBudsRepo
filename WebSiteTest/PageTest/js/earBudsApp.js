@@ -11,12 +11,12 @@ earBudsApp.config(['$routeProvider',
         }).
         when('/profile', {
             templateUrl: 'views/profile.html',
-            controller: 'ProfileCtrl',
+            controller: 'MainCtrl',
             activetab: 'profile'
         }).
         when('/musicians', {
             templateUrl: 'views/musicians.html',
-            controller: 'MusiciansCtrl',
+            controller: 'MainCtrl',
             activetab: 'musicians'
         }).
         otherwise({
