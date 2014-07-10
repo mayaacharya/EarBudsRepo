@@ -6,21 +6,21 @@ earBudsApp.config(['$routeProvider',
       $routeProvider.
         when('/home', {
             templateUrl: 'views/home.html',
-            controller: 'MainCtrl',
+            controller: 'HomeCtrl',
             activetab: 'home'
         }).
         when('/profile', {
             templateUrl: 'views/profile.html',
-            controller: 'MainCtrl',
+            controller: 'ProfileCtrl',
             activetab: 'profile'
         }).
         when('/musicians', {
             templateUrl: 'views/musicians.html',
-            controller: 'MainCtrl',
+            controller: 'MusiciansCtrl',
             activetab: 'musicians'
         }).
         otherwise({
-            redirectTo: '/views/home.html'
+            redirectTo: '/home'
         });
   }]);
 
@@ -31,7 +31,7 @@ earBudsApp.controller("MainCtrl", ['$scope', '$http', '$route', function ($scope
 }]);
 
 //creating the profile controller
-earBudsApp.controller("ProfileCtrl", ['$scope'. '$http', '$route', function($scope, $http, $route) {
+earBudsApp.controller("ProfileCtrl", ['$scope', '$http', '$route', function($scope, $http, $route) {
     $scope.$route = $sroute;
 }])
 
