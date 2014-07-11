@@ -1,22 +1,223 @@
 ﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Authorize access to your account on SoundCloud - Create, record and share your sounds for free</title>
+    <meta content="record, sounds, share, sound, audio, tracks, music, soundcloud" name="keywords" />
+    <meta content="Explore the largest community of artists, bands, podcasters and creators of music &amp; audio." name="description" />
 
-<div ng-show="register">
-    Register
-    <script src="http://connect.soundcloud.com/sdk.js"></script>
-    <script>
-        // initialize client with app credentials
-        SC.initialize({
-            client_id: 'SOUNDCLOUD_ID',
-            redirect_uri: 'callback.html'
-        });
-
-        // initiate auth popup
-        SC.connect(function () {
-            SC.get('/me', function (me) {
-                alert('Hello, ' + me.username);
-            });
-        });
+    <meta content="width=device-width" name="viewport" />
+    <meta content="IE=edge,chrome=1" name="X-UA-Compatible" />
+    <meta content="SoundCloud" name="application-name" />
+    <meta content="Launch SoundCloud" name="msapplication-tooltip" />
+    <meta content="https://a1.sndcdn.com/images/win8.png" name="msapplication-TileImage" />
+    <meta content="#ff6600" name="msapplication-TileColor" />
+    <meta content="https://soundcloud.com" name="msapplication-starturl" />
+    <meta content="https://a1.sndcdn.com/images/facebook_og_image.png?e76cf77" property="og:image" />
+    <meta content="soundcloud" property="og:site_name" />
+    <meta content="19507961798" property="fb:app_id" />
+    <meta content="https://soundcloud.com/connect?state=SoundCloud_Dialog_69fa7&amp;client_id=609ae0b573913db156968e0ec38c1e26&amp;redirect_uri=http%3A%2F%2Fdevelopers.soundcloud.com%2Fcallback.html&amp;response_type=code_and_token&amp;scope=non-expiring&amp;display=popup" property="og:url" />
+    <!--[if IE]>
+    <script src="https://a1.sndcdn.com/javascripts/plugins/vendor/excanvas-compressed.js?e76cf77" type="text/javascript"></script>
+    <![endif]-->
+    <!--[if IE 9]>
+    <script type="text/javascript">
+    document.getElementsByTagName("html")[0].className = "ie9";
     </script>
-</div>
+    <![endif]-->
+    <!--[if IE 8]>
+    <script type="text/javascript">
+    document.getElementsByTagName("html")[0].className = "ie8";
+    </script>
+    <![endif]-->
+    <!--[if lte IE 8]>
+    <script type="text/javascript">
+    document.getElementsByTagName("html")[0].className = "ie7";
+    </script>
+    <meta content="true" name="MSSmartTagsPreventParsing" />
+    <meta content="false" http-equiv="imagetoolbar" />
+    <![endif]-->
+    <script type="text/javascript">
+        window.SC = { "bufferTracks": [], "bufferComments": [], "cookieDomain": "soundcloud.com", "assetPath": "a1.sndcdn.com", "facebook": { "appId": "19507961798", "appKey": "61261ce0407b2ccb568641b513098e18", "namespace": "soundcloud", "xdReceiver": "/connect/xd_receiver.htm" }, "clientID": "642aa4110ea8a23d048f4fd67ff465da", "scApiDomain": "api.soundcloud.com", "songkickApiKey": "ZWsLr2h7FF5sHG54", "gaID": "UA-2519404-1" };
+    </script>
+    <link href="https://a1.sndcdn.com/stylesheets/general.css?e76cf77" media="all" rel="stylesheet" type="text/css" />
+    <link href="https://a1.sndcdn.com/stylesheets/special.css?e76cf77" media="all" rel="stylesheet" type="text/css" />
+    <link href="/sc-opensearch.xml" rel="search" title="SoundCloud Search" type="application/opensearchdescription+xml" />
 
+    <link href="https://a1.sndcdn.com/images/apple-touch-icon.png?e76cf77" rel="apple-touch-icon" />
+    <link href="https://a1.sndcdn.com/favicon.ico?e76cf77" rel="shortcut icon" />
+    <link href="https://a1.sndcdn.com/images/soundcloud_app.png?e76cf77" rel="fluid-icon" />
+    <link href="https://plus.google.com/111859952716487912198" rel="publisher" />
+</head>
+<body class="popup authorize restricted" id="oauth2_authorization">
+    <div id="main-wrapper">
+        <div id="main-wrapper-inner">
+            <div id="popup-mobile-logo">
+                <span class="logo"></span>
+                <span class="title">Connect <span>with</span> SoundCloud</span>
+                <a class="reload"></a>
+            </div>
 
+            <span data-sc-app-name="EarBuds" id="app-name" visibility="hidden"></span>
+            <h1 class="authorize-text ">
+                Allow <b>EarBuds</b> access to your SoundCloud
+                account?
+            </h1>
+
+            <div class="oauth-connect-form-wrapper">
+                <div class="connect-social-buttons"><a href="https://soundcloud.com/login/facebook/oauth?display=popup&amp;permissions=client_signup&amp;redirect_uri=https%3A%2F%2Fsoundcloud.com%2Fconnect%2Fvia%2Ffacebook%2Freturning&amp;state=eyJjbGllbnRfaWQiOiI2MDlhZTBiNTczOTEzZGIxNTY5NjhlMGVjMzhjMWUyNiIsInJlZGlyZWN0X3VyaSI6Imh0dHA6Ly9kZXZlbG9wZXJzLnNvdW5kY2xvdWQuY29tL2NhbGxiYWNrLmh0bWwiLCJzdGF0ZSI6IlNvdW5kQ2xvdWRfRGlhbG9nXzY5ZmE3IiwicmVzcG9uc2VfdHlwZSI6ImNvZGVfYW5kX3Rva2VuIiwic2NvcGUiOiJub24tZXhwaXJpbmciLCJkaXNwbGF5IjoicG9wdXAiLCJwb3B1cCI6ZmFsc2UsImZhY2Vib29rX2F1dGhlbnRpY2l0eSI6IjI0MWMyMGFmYTk0Yjg4YjczNjVkNTdlMTQ1ZjE0ODdmIn0%3D" class="facebook-signin">Sign in with Facebook</a><div class="google-plus-signin" data-accesstype="offline" data-apppackagename="com.soundcloud.android" data-callback="googlePlusSigninCallback" data-clientid="984739005367.apps.googleusercontent.com" data-cookiepolicy="single_host_origin" data-login_via="/connect/via/google_plus/returning" data-redirecturi="postmessage" data-requestvisibleactions="http://schemas.google.com/AddActivity http://schemas.google.com/ListenActivity http://schemas.google.com/CreateActivity" data-scope="https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.profile" data-state="eyJzdGF0ZSI6IlNvdW5kQ2xvdWRfRGlhbG9nXzY5ZmE3IiwiY2xpZW50X2lk&#x000A;IjoiNjA5YWUwYjU3MzkxM2RiMTU2OTY4ZTBlYzM4YzFlMjYiLCJyZWRpcmVj&#x000A;dF91cmkiOiJodHRwOi8vZGV2ZWxvcGVycy5zb3VuZGNsb3VkLmNvbS9jYWxs&#x000A;YmFjay5odG1sIiwicmVzcG9uc2VfdHlwZSI6ImNvZGVfYW5kX3Rva2VuIiwi&#x000A;c2NvcGUiOiJub24tZXhwaXJpbmciLCJkaXNwbGF5IjoicG9wdXAiLCJjb250&#x000A;cm9sbGVyIjoib2F1dGgyX2F1dGhvcml6YXRpb24iLCJhY3Rpb24iOiJhdXRo&#x000A;b3JpemUiLCJnb29nbGVfcGx1c19hdXRoZW50aWNpdHkiOiJjZDkyNWEwMGY1&#x000A;MDZhYjY1N2UyNjkzZDU3MjQzODFlNyJ9&#x000A;"></div></div>
+                <div class="tabs-list">
+                    <ul class="tabs">
+                        <li class="current first"><a href="#tab-connect">Connect</a></li>
+                        <li class="last"><a href="#tab-connect-sign-up">Sign up</a></li>
+                    </ul>
+                    <div id="open-browser"><a class="link-button" href="#open-browser">Open in Browser</a></div>
+                </div>
+                <div class="pane" id="tab-connect">
+                    <div class="login-form oauth-form">
+                        <form action="/connect/login?state=SoundCloud_Dialog_69fa7" class="authorize-client log-in existing-user authorize-token" id="oauth2-login-form" method="post">
+                            <input id="client_id" name="client_id" type="hidden" value="609ae0b573913db156968e0ec38c1e26" /><input id="redirect_uri" name="redirect_uri" type="hidden" value="http://developers.soundcloud.com/callback.html" /><input id="state" name="state" type="hidden" value="SoundCloud_Dialog_69fa7" /><input id="response_type" name="response_type" type="hidden" value="code_and_token" /><input id="scope" name="scope" type="hidden" value="non-expiring" /><input id="display" name="display" type="hidden" value="popup" />
+                            <div class="form-group"><label for="username">Your username or email address</label><input class="title" id="username" maxlength="255" name="username" type="text" /></div>
+                            <div class="form-group"><label for="password">Your password</label><input class="title" id="password" name="password" type="password" /></div>
+                            <div class="remember">
+                                <div class="checkbox">
+                                    <input checked="checked" id="site-remember-me" name="remember_me" type="checkbox" />
+                                    <label for="site-remember-me">Remember me</label>
+                                </div>
+                            </div>
+                            <a href="/login/forgot" class="forgot-link">Forgot password?</a>
+                            <div class="form-buttons"><input class="default large" id="authorize" name="commit" type="submit" value="Connect" /><a href="http://developers.soundcloud.com/callback.html?error=access_denied&amp;error_description=The+end-user+denied+the+request.&amp;state=SoundCloud_Dialog_69fa7#" class="cancel">Cancel</a></div>
+                        </form>
+                    </div>
+                    <div class="forgot-password">
+                        <div class="forgot-password-container hidden">
+                            <form accept-charset="utf-8" action="https://soundcloud.com/login/forgot" id="forgot-password-form" method="post">
+                                <div class="form-group">
+                                    <label for="email">
+                                        <strong>
+                                            Your email address or profile link (without soundcloud.com/):
+                                        </strong>
+                                    </label><input class="title auto-focus" id="email" name="email" type="text" />
+                                </div>
+                                <p>We'll send you a link that'll allow you to change your password. Need help? visit <a href="http://help.soundcloud.com/customer/portal/articles/search?q=forgot+email+address" target="_blank">our Help Center</a>.</p>
+                                <a href="/login" class="forgot-link-back">Oh, I remember it!</a>
+                                <div class="form-buttons"><input class="default" name="commit" type="submit" value="Submit" /></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <form accept-charset="utf-8" action="/login/forgot?state=SoundCloud_Dialog_69fa7" class="forgot-password authorize-token hidden" id="oauth2-forgot-password" method="post">
+                    <div class="forgot-password oauth-form">
+                        <h3>
+                            Forgot password
+                            <a class="login-connect">Oh, I remember it.</a>
+                        </h3>
+                        <div class="form-group"><label for="email">Your email address</label><input class="title" id="email" name="email" type="text" /></div>
+                    </div>
+                    <div class="form-buttons-big"><input class="forgot-password default big" name="commit" type="submit" value="Submit" /></div>
+                </form>
+                <div class="hidden pane" id="tab-connect-sign-up">
+                    <div id="sign-up-forms">
+                        <form action="/connect/signup?state=SoundCloud_Dialog_69fa7" class="authorize-token authorize-client sign-up" id="signup-form-oauth" method="post">
+                            <input id="return_to" name="return_to" type="hidden" value="https://soundcloud.com/connect/signup_details?client_id=609ae0b573913db156968e0ec38c1e26&amp;display=popup&amp;redirect_uri=http%3A%2F%2Fdevelopers.soundcloud.com%2Fcallback.html&amp;response_type=code_and_token&amp;scope=non-expiring&amp;state=SoundCloud_Dialog_69fa7" />
+                            <input id="signup_denied_url" name="signup_denied_url" type="hidden" value="http://developers.soundcloud.com/callback.html?error=signup_denied&amp;error_description=Sign+up+was+denied+for+this+user.&amp;state=SoundCloud_Dialog_69fa7#" />
+                            <input id="client_id" name="client_id" type="hidden" value="609ae0b573913db156968e0ec38c1e26" /><input id="redirect_uri" name="redirect_uri" type="hidden" value="http://developers.soundcloud.com/callback.html" /><input id="state" name="state" type="hidden" value="SoundCloud_Dialog_69fa7" /><input id="response_type" name="response_type" type="hidden" value="code_and_token" /><input id="scope" name="scope" type="hidden" value="non-expiring" /><input id="display" name="display" type="hidden" value="popup" />
+
+                            <div class="signup-form oauth-form">
+                                <div class="form-group suggest-email">
+                                    <label for="user_email">What's your email address? </label>
+                                    <input class="title" id="user_email" maxlength="255" name="user[email]" size="255" type="text" />
+                                    <small class="correction-notice hidden">
+                                        Whoops, we corrected your misspelled email address
+                                    </small>
+                                </div>
+                                <div class="form-group">
+                                    <div class="width_1_2"><label for="user_password">Choose a password </label><input class="title" id="user_password" maxlength="255" name="user[password]" size="255" type="password" /></div>
+                                    <div class="width_1_2 last"><label for="user_password_confirmation">Re-type password </label><input class="title" id="user_password_confirmation" maxlength="255" name="user[password_confirmation]" size="255" type="password" /></div>
+                                </div>
+                                <div class="checkbox">
+                                    <input id="email_updates" name="email_updates" type="checkbox" value="1" />
+                                    <label class="larger" for="email_updates">
+                                        Yes, send me email updates about SoundCloud
+                                        <span class="inline-help"><span class="content hidden">This includes Newsletters, Product updates & Special offers, Surveys. You can withdraw your consent at any time under email settings.</span></span>
+                                    </label>
+                                </div>
+                                <div class="t-and-c">
+                                    <div class="checkbox">
+                                        <input id="user_terms_of_use" name="user[terms_of_use]" tabindex="" type="checkbox" value="1" />
+                                        <label for="user_terms_of_use">
+                                            I agree to the
+                                            <a href="/pages/plain_terms_and_conditions" target="_blank">Terms of Use</a>
+                                            and
+                                            <a href="/pages/plain_privacy" target="_blank">Privacy Policy</a>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-buttons"><input class="default large" id="signup_authorize" name="commit" type="submit" value="Sign up " /><a href="http://developers.soundcloud.com/callback.html?error=access_denied&amp;error_description=The+end-user+denied+the+request.&amp;state=SoundCloud_Dialog_69fa7#" class="cancel">Cancel</a></div>
+                        </form>
+                    </div>
+                </div>
+                <div id="tell-more">
+                    <ul class="bullet indent">
+                        <li>
+                            <a href="#more-text" id="more-link">
+                                Tell me more
+                                <span class="arrow"></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="hidden" id="more-text">
+                        <div>
+                            <p>
+                                <strong>What is SoundCloud</strong>
+                                <br />
+                                SoundCloud allows you to upload and share your sounds from anywhere to
+                                almost everywhere on the internet.
+                                Sign up for a free SoundCloud account and join the world's largest
+                                community of music and audio creators!
+                            </p>
+                            <p>
+                                <strong>What does connect mean</strong>
+                                <br />
+                                With access, the app can upload and download tracks, make comments,
+                                favorite tracks, and more.
+                                Your email address will be kept private and you
+                                can disconnect the app in your SoundCloud account settings at any time.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://a1.sndcdn.com/javascripts/base.js?e76cf77" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        $.helpers.loadScriptAsync('//www.google-analytics.com/ga.js');
+    </script>
+    <script type="text/javascript">
+        _qoptions = { qacct: "p-47_zcqmJsLHXQ" };
+        $.helpers.loadScriptAsync('//edge.quantserve.com/quant.js', '//secure.quantserve.com/quant.js', true);
+    </script>
+    <noscript>
+        <img alt="Quantcast" class="hidden" src="//pixel.quantserve.com/pixel/p-47_zcqmJsLHXQ.gif" />
+    </noscript>
+    <noscript>
+        <img alt="" src="//logs1241.xiti.com/hit.xiti?s=487751&amp;s2=&amp;p=&amp;di=&amp;an=&amp;ac=" />
+    </noscript>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        (function () {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/client:plusone.js?onload=googlePlusRenderPlusButton';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+        })();
+        //]]>
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+﻿[
+  {
+    "id-number": "1",
+    "first-name": "Maya",
+    "last-name": "Acharya",
+    "city": "Los Altos",
+    "state": "CA",
+    "zipcode": "94022",
+    "instruments": [
+	{	"primary": "guitar",
+		"secondary": "piano",
+	}
+	],
+	"genres": {"jazz", "rock", "blues", "classical"}
+	},
+]
