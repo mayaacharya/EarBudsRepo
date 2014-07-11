@@ -1,6 +1,8 @@
 ﻿//Create a new Angular Module for the earBudsApp. 
 var earBudsApp = angular.module("earBudsApp", ['ngRoute']);
 
+
+
 earBudsApp.config(['$routeProvider',
   function ($routeProvider) {
       $routeProvider.
